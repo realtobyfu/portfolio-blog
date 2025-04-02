@@ -73,63 +73,108 @@ p {
   margin-bottom: 3rem;
 }
 
+.post-grid {
+  display: grid;
+  /* Flexible columns: each card is at least 280px wide,
+     and they fill the row as many times as possible */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Let the gap grow a bit on larger screens (from 1rem up to 2rem) */
+  gap: clamp(1rem, 4vw, 2rem);
+  margin-top: 1.5rem;
+}
+
+
 
 /* Use a slightly darker brown border color than the background */
-.post-grid {
-  display: flex;
-  flex-wrap: wrap;
-  /*grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));*/
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  justify-items: flex-start;  /* Center cards if there's leftover space */
-  padding-right: 1rem;
-}
-
 .post-card {
-  /*background: #FFFFFF;*/
-  /* Warmer brown border for emphasis */
-  border: 2px solid #9F7861;
+  border: 2px solid #9F7861; /* Warmer brown border */
   border-radius: 20px;
-  /* Prevent the card from stretching too wide */
-  max-width: 290px;
-  /* Add a bit more padding for a comfortable layout */
-  width: 100%;
-
-  padding: 1.5rem;
-  text-align: left;         /* Match the design's text alignment */
+  overflow: hidden;  /* Ensures the image corners are neatly trimmed */
+  /* If you want an upper limit on card size: */
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
 }
 
+/* The top portion for the image
+   If you’re using <Image fill .../> from Next.js:
+   position: relative; height: 180px;
+*/
 .post-card-image {
-  position: relative;
   width: 100%;
-  height: 180px; /* REQUIRED to prevent full-screen bug */
+  position: relative;  /* only needed if using fill */
+  height: 180px;       /* only needed if using fill */
 }
 
-.post-card img {
-  /*position: relative;*/
-  /*width: 100%;*/
-  /*height: 180px;*/
-  /*border-radius: 6px;*/
-  /*margin-bottom: 1rem;*/
-  object-fit: cover;
+.post-card-content {
+  /* No top padding needed for the image to remain flush */
+  padding: 1.5rem;
+  text-align: left;
 }
 
-.post-card h3 {
+/* HEADINGS */
+.post-card-content h3 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;  /* Keeps titles consistent */
+  font-family: 'Playfair Display', serif;
   color: #4A403A;
 }
 
-.post-card p {
+/* PARAGRAPH */
+.post-card-content p {
+  /* Different font for paragraphs */
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.4;
-  margin-bottom: 0;         /* Adjust margin to taste */
+  margin-bottom: 0;
+  color: #4A403A;
 }
+
+/*.post-card {*/
+/*  !*background: #FFFFFF;*!*/
+/*  !* Warmer brown border for emphasis *!*/
+/*  border: 2px solid #9F7861;*/
+/*  border-radius: 20px;*/
+/*  !* Prevent the card from stretching too wide *!*/
+/*  max-width: 290px;*/
+/*  !* Add a bit more padding for a comfortable layout *!*/
+/*  width: 100%;*/
+
+/*  padding: 1.5rem;*/
+/*  text-align: left;         !* Match the design's text alignment *!*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: flex-start;*/
+/*  overflow: hidden;*/
+/*}*/
+
+/*.post-card-image {*/
+/*  position: relative;*/
+/*  width: 100%;*/
+/*  height: 180px; !* REQUIRED to prevent full-screen bug *!*/
+/*}*/
+
+/*.post-card img {*/
+/*  !*position: relative;*!*/
+/*  !*width: 100%;*!*/
+/*  !*height: 180px;*!*/
+/*  !*border-radius: 6px;*!*/
+/*  !*margin-bottom: 1rem;*!*/
+/*  object-fit: cover;*/
+/*}*/
+
+/*.post-card h3 {*/
+/*  margin-bottom: 0.5rem;*/
+/*  font-size: 1.5rem;*/
+/*  font-family: 'Playfair Display', serif;  !* Keeps titles consistent *!*/
+/*  color: #4A403A;*/
+/*}*/
+
+/*.post-card p {*/
+/*  font-size: 1rem;*/
+/*  line-height: 1.4;*/
+/*  margin-bottom: 0;         !* Adjust margin to taste *!*/
+/*}*/
 
 
 /* About Me */

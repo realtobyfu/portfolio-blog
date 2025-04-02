@@ -20,28 +20,41 @@ export default function HomePage() {
                 <div className="post-grid">
                     {/* Post Card 1 */}
                     <div className="post-card">
-                        <Image
-                            src={placeholderImage}
-                            alt="Exploring Color Theory"
-                            placeholder="blur"
-                            width={240}
-                            height={160}
-                        />
-                        <h3>Exploring Color Theory</h3>
-                        <p>A journey through color harmony and contrast.</p>
+                        <div className="post-card-image">
+                            <Image
+                                src={placeholderImage}
+                                alt="Exploring Color Theory"
+                                placeholder="blur"
+                                fill  // <-- Key to filling its container
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
+                        <div className="post-card-content">
+                            <h3>Exploring Color Theory</h3>
+                            <p>A journey through color harmony and contrast.</p>
+                        </div>
                     </div>
+
+
                     {/* Post Card 2 */}
                     <div className="post-card">
-                        <Image
-                            src={placeholderImage}
-                            alt="My Sketching Process"
-                            placeholder="blur"
-                            width={240}
-                            height={160}
-                        />
-                        <h3>My Sketching Process</h3>
-                        <p>A peek into my daily sketching routine and tools.</p>
+                        <div className="post-card-image">
+                            <Image
+                                src={placeholderImage}
+                                alt="My Sketching Process"
+                                placeholder="blur"
+                                fill  // <-- Key to filling its container
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
+                        <div className="post-card-content">
+                            <h3>My Sketching Process</h3>
+                            <p>A peek into my daily sketching routine and tools.</p>
+                        </div>
                     </div>
+
+
+
                     {/* Post Card 3 */}
                     <div className="post-card">
                         <div className="post-card-image">
@@ -53,10 +66,13 @@ export default function HomePage() {
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>
-                        <h3>Finding Inspiration</h3>
-                        <p>How I discover new ideas and sources of creativity.</p>
+                        <div className="post-card-content">
+                            <h3>Finding Inspiration</h3>
+                            <p>How I discover new ideas and sources of creativity.</p>
+                        </div>
                     </div>
                 </div>
+
             </section>
 
             {/* About Me */}
