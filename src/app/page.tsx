@@ -1,5 +1,7 @@
 import Image from 'next/image'
-import placeholderImage from '../../public/T1002267.JPG' // You can rename or use your own.
+import placeholderImage from '../../public/T1002267.jpeg' // You can rename or use your own.
+import icon from '../../public/T1002267.jpeg'
+
 
 export default function HomePage() {
     return (
@@ -42,13 +44,15 @@ export default function HomePage() {
                     </div>
                     {/* Post Card 3 */}
                     <div className="post-card">
-                        <Image
-                            src={placeholderImage}
-                            alt="Finding Inspiration"
-                            placeholder="blur"
-                            width={240}
-                            height={160}
-                        />
+                        <div className="post-card-image">
+                            <Image
+                                src={placeholderImage}
+                                alt="Exploring Color Theory"
+                                placeholder="blur"
+                                fill  // <-- Key to filling its container
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
                         <h3>Finding Inspiration</h3>
                         <p>How I discover new ideas and sources of creativity.</p>
                     </div>

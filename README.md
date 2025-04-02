@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+
 ## Getting Started
 
 First, run the development server:
@@ -13,6 +14,35 @@ pnpm dev
 # or
 bun dev
 ```
+
+
+## File Structure:
+
+portfolio-blog/
+├─ src/
+│  ├─ app/
+│  │  ├─ globals.css
+│  │  ├─ layout.tsx
+│  │  ├─ page.tsx               // Home page
+│  │  └─ posts/
+│  │     ├─ page.tsx            // Blog listing page
+│  │     └─ [slug]/
+│  │        └─ page.tsx         // Single post page
+│  ├─ lib/
+│  │  └─ posts.js               // Helper functions for reading markdown
+│  └─ posts/
+│     ├─ first-post.md
+│     └─ second-post.md
+├─ public/
+│  ├─ T1002267.JPG              // Your placeholder
+│  └─ placeholder.jpg           // Optional placeholder
+├─ package.json
+├─ next.config.ts
+├─ postcss.config.mjs
+├─ tailwind.config.js
+├─ tsconfig.json
+└─ ... (etc)
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

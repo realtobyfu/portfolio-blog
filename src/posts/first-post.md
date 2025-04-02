@@ -13,4 +13,4 @@ Here’s some markdown content:
 - **Bold text**
 
 
-![Pre-Catalan](/images/T1002267.JPG)
+![Pre-Catalan](../../public/T1002267.jpeg)
