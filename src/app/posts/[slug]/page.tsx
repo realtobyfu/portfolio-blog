@@ -1,50 +1,47 @@
 // src/app/posts/[slug]/page.tsx
-import { getAllPostIds, getPostData } from '@/lib/posts';
+import { getAllPostIds, getPostData, type PostData } from '@/lib/posts';
 import { format } from 'date-fns';
+import Image from 'next/image'
+import '../../blog/styles.css';
 
-// 1) Tell Next.js which slugs exist
 export async function generateStaticParams() {
     const paths = getAllPostIds();
-    // returns [{ params: { slug: 'first-post' } }, ...]
     return paths.map((path) => ({
         slug: path.params.slug,
     }));
 }
 
+export default async function PostPage(props: { params: { slug: string } }) {
+    const { params } = props;
+    const postData: PostData = await getPostData(params.slug);
 
-// 2) Use an async server component to fetch the data for each post
-export default async function PostPage({
-                                           params,
-                                       }: {
-    params: { slug: string }
-}) {
-    const postData = await getPostData(params.slug);
-
-    // Render your markdown
     return (
         <main className="container">
+            {postData.coverImage && (
+                <div className="relative w-full h-[300px] mb-4 post-cover-image">
+                    <Image
+                        src={postData.coverImage}
+                        alt={postData.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                    />
+                </div>
+            )}
+
             <article>
                 <h1 className="text-3xl font-bold mb-2">{postData.title}</h1>
                 <div className="text-gray-500 mb-4">
                     {format(new Date(postData.date), 'PPP')}
                 </div>
-                {/* Dangerously set the HTML from the markdown conversion */}
+                {postData.description && (
+                    <p className="text-lg mb-4 text-gray-700">{postData.description}</p>
+                )}
                 <div
-                    className="prose"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+                    className="prose max-w-3xl mx-auto"
+                    dangerouslySetInnerHTML={{ __html: postData.contentHtml || '' }}
                 />
             </article>
         </main>
     );
-}
-
-
-export async function getStaticPaths() {
-    const paths = getAllPostIds();
-    return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.slug);
-    return { props: { postData } };
 }

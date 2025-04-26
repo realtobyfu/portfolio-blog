@@ -1,0 +1,5 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#e8e8e8"/>
+  <rect x="150" y="100" width="300" height="200" fill="#d0d0d0" rx="10" ry="10"/>
+  <text x="300" y="210" font-family="Arial" font-size="24" text-anchor="middle" fill="#555">Project Preview</text>
+</svg> 

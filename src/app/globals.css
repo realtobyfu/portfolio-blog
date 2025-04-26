@@ -3,6 +3,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Playwrite AU SA font configuration */
+@font-face {
+  font-family: 'Playwrite AU SA';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url('/fonts/playwrite-au-sa-latin-300-normal.woff2') format('woff2'),
+       url('/fonts/playwrite-au-sa-latin-300-normal.woff') format('woff');
+}
+
+/* Utility class for Playwrite AU SA */
+.font-playwrite {
+  font-family: 'Playwrite AU SA', sans-serif;
+  font-weight: 300;
+}
+
 /* Basic resets & global styles */
 * {
   margin: 0;
@@ -23,6 +39,7 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  width: 100%;
 }
 
 /* Navigation */
@@ -91,13 +108,13 @@ p {
   border-radius: 20px;
   overflow: hidden;  /* Ensures the image corners are neatly trimmed */
   /* If you want an upper limit on card size: */
-  max-width: 320px;
+  max-width: 16rem;
   display: flex;
   flex-direction: column;
 }
 
 /* The top portion for the image
-   If you’re using <Image fill .../> from Next.js:
+   If you're using <Image fill .../> from Next.js:
    position: relative; height: 180px;
 */
 .post-card-image {
@@ -225,3 +242,51 @@ footer {
   text-decoration: none;
 }
 
+
+/* slug.js */
+/* Single Post Header */
+.single-post-header {
+  margin-bottom: 2rem;
+}
+
+/* The horizontal line we inserted in the top portion */
+.single-post-header hr {
+  margin-top: 1rem;
+  border: none;
+  height: 1px;
+  background-color: #9F7861; /* Warmer brown line or #E6E6E6 if you prefer a subtle color */
+}
+
+/* The cover image container at the top (300px tall).
+   We've already set 'position: relative' and a fixed height in the component. */
+.post-cover-image {
+  border-radius: 8px;       /* if you want rounded corners */
+  overflow: hidden;         /* ensures corners remain neat */
+  margin-bottom: 1rem;
+}
+
+/* Markdown content styles
+   (Tailwind's 'prose' class offers a good default. You can override it here.) */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;       /* adjust if you like */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* If you want text or headings from .md to follow your custom color or font: */
+.prose p,
+.prose li,
+.prose h2,
+.prose h3 {
+  color: #4A403A;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Blog nav styles */
+.blog-nav {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 2rem;
+  background-color: white;
+}
